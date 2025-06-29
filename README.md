@@ -36,7 +36,60 @@ Desenvolver uma aplicação back-end completa que gerencie os personagens icôni
     npm install
     ```
 
-3. **Configure o arquivo `.env` na raiz do projeto:**
+3. **Crie o Banco e as Tabelas:**
+
+Para que a API funcione corretamente, é necessário criar o banco de dados e a tabela de personagens no MySQL. Utilize o script SQL abaixo:
+
+<details>
+<summary><strong>🗄️ Script SQL do Banco de Dados</strong></summary>
+
+```sql
+-- Criação do banco de dados
+CREATE DATABASE db_personagens_disney;
+USE db_personagens_disney;
+
+-- Criação da tabela de personagens
+CREATE TABLE personagens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    apelido VARCHAR(100),
+    biografia TEXT,
+    data_criacao DATE,
+    local_nascimento VARCHAR(100),
+    descricao_vestimenta TEXT,
+    foto_url VARCHAR(255),
+    especie VARCHAR(50),
+    criador VARCHAR(100)
+);
+
+-- Adicione um personagem para testar a API
+INSERT INTO personagens (
+    nome,
+    apelido,
+    biografia,
+    data_criacao,
+    local_nascimento,
+    descricao_vestimenta,
+    foto_url,
+    especie,
+    criador
+) VALUES (
+    'Mickey Mouse',
+    'Mickey',
+    'Mickey Mouse é um personagem de desenho animado criado por Walt Disney e Ub Iwerks em 1928. Tornou-se o símbolo da The Walt Disney Company.',
+    '1928-11-18',
+    'Estados Unidos',
+    'Shorts vermelhos, grandes sapatos amarelos e luvas brancas',
+    'https://upload.wikimedia.org/wikipedia/pt/d/d4/Mickey_Mouse.png',
+    'Rato',
+    'Walt Disney'
+);
+```
+
+</details>
+
+
+4. **Configure o arquivo `.env` na raiz do projeto:**
 
     ```env
         DB_HOST=localhost
@@ -46,7 +99,7 @@ Desenvolver uma aplicação back-end completa que gerencie os personagens icôni
         DB_PORT=3306
     ```
 
-4. **Inicie o servidor:**
+5. **Inicie o servidor:**
 
     ```bash
     npm run dev
